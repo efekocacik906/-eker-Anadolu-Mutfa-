@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şeker Anadolu Mutfağı | 1999'dan Beri Esnaf Lokantası</title>
+    <style>
+        /* Renk Paleti ve Temel Ayarlar */
+        :root {
+            --kiremit: #b24c38;
+            --zeytin-yesili: #5a6b47;
+            --krem: #fdfbf7;
+            --koyu-gri: #333333;
+            --acik-gri: #f4f4f4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--krem);
+            color: var(--koyu-gri);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Georgia', serif;
+            color: var(--kiremit);
+        }
+
+        /* Navigasyon */
+        header {
+            background-color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--kiremit);
+            text-decoration: none;
+            font-family: 'Georgia', serif;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--koyu-gri);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--zeytin-yesili);
+        }
+
+        .siparis-btn {
+            background-color: #25D366; /* WhatsApp Yeşili */
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* Hero Bölümü */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+
+        .vurgu-bandi {
+            background-color: var(--kiremit);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Hakkımızda */
+        .section-padding {
+            padding: 80px 5%;
+        }
+
+        .hakkimizda-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .ozellikler {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .ozellik-kart {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            text-align: center;
+            flex: 1;
+            border-bottom: 3px solid var(--zeytin-yesili);
+        }
+
+        /* Menü */
+        .menu-section {
+            background-color: var(--acik-gri);
+        }
+
+        .menu-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-kategori {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--kiremit);
+        }
+
+        .menu-kategori h3 {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            color: var(--zeytin-yesili);
+        }
+
+        .menu-item {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .ozel-gun {
+            color: var(--kiremit);
+            font-size: 0.85rem;
+            font-style: italic;
+            display: block;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+
+        /* İletişim ve Footer */
+        .iletisim-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        footer {
+            background-color: var(--koyu-gri);
+            color: white;
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Georgia', serif;
+            font-size: 1.5rem;
+            color: var(--krem);
+            margin-bottom: 10px;
+        }
+
+        /* Mobil Uyum */
+        @media (max-width: 768px) {
+            .hakkimizda-grid, .iletisim-grid {
+                grid-template-columns: 1fr;
+            }
+            nav ul {
+                display: none; /* Mobilde hamburger menü yapılabilir, şimdilik gizli */
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .ozellikler {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Üst Menü -->
+    <header>
+        <a href="#" class="logo">Şeker Anadolu Mutfağı</a>
+        <nav>
+            <ul>
+                <li><a href="#hakkimizda">Hakkımızda</a></li>
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+                <li><a href="https://wa.me/903124193751" target="_blank" class="siparis-btn">WhatsApp Sipariş</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Ana Görsel (Hero) -->
+    <section class="hero">
+        <div class="vurgu-bandi">🌟 Salı ve Perşembe Günlerine Özel Kuyu Kebabı!</div>
+        <h1>Esnaf Lokantası Sıcaklığı, Profesyonel Lezzet</h1>
+        <p>1999'dan beri Ankara'nın kalbi Kızılay'da, ev sıcaklığındaki geleneksel Türk mutfağı lezzetlerini sizlerle buluşturuyoruz.</p>
+    </section>
+
+    <!-- Hakkımızda Bölümü -->
+    <section id="hakkimizda" class="section-padding">
+        <div class="hakkimizda-grid">
+            <div>
+                <h2>Biz Kimiz?</h2>
+                <p><br><strong>Türkiye Şeker Sanayi İşçiler Sendikası Ölüm ve Sosyal Yardımlaşma Vakfı İktisadi İşletmesi</strong> bünyesinde hizmet veren Şeker Anadolu Mutfağı, 1999 yılından bu yana değişmeyen kalitesiyle misafirlerini ağırlamaktadır.</p>
+                <p><br>İster tek başınıza huzurlu bir öğle yemeği yiyin, ister kalabalık gruplarınızla samimi bir sofra kurun; aile dostu ortamımızda herkes için bir yer var.</p>
+                
+                <div class="ozellikler">
+                    <div class="ozellik-kart">
+                        👨‍👩‍👧‍👦<br>Aile Dostu Ortam
+                    </div>
+                    <div class="ozellik-kart">
+                        ♿<br>Tekerlekli Sandalyeye Uygun
+                    </div>
+                    <div class="ozellik-kart">
+                        🛍️<br>Gel-Al & Paket Servis
+                    </div>
+                </div>
+            </div>
+            <div>
+                <!-- Aşçı veya mutfak görseli placeholder -->
+                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Türk Mutfağı" style="width: 100%; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Menü Bölümü -->
+    <section id="menu" class="section-padding menu-section">
+        <h2>Menümüzden Seçmeler</h2>
+        <div class="menu-grid">
+            
+            <!-- Çorbalar -->
+            <div class="menu-kategori">
+                <h3>🥣 Çorbalar & Başlangıçlar</h3>
+                <div class="menu-item"><span>Kremalı Mantar Çorbası</span></div>
+                <div class="menu-item"><span>Geleneksel Ezogelin Çorbası</span></div>
+            </div>
+
+            <!-- Kuyu Kebabı -->
+            <div class="menu-kategori" style="border-top-color: var(--zeytin-yesili);">
+                <h3>🍖 Kuyu Kebabı (İmza Lezzet)</h3>
+                <span class="ozel-gun">Sadece Salı ve Perşembe Günleri Kuyuda Hazırlanır!</span>
+                <div class="menu-item"><span>Kuyu Büryan Kebap (150 gr)</span></div>
+                <div class="menu-item"><span>Kuyu Büryan Kebap (250 gr)</span></div>
+                <div class="menu-item"><span>Kuyu Büryan Kebap (500 gr)</span></div>
+            </div>
+
+            <!-- Ev Yemekleri -->
+            <div class="menu-kategori">
+                <h3>🥘 Klasik Türk Mutfağı</h3>
+                <div class="menu-item"><span>Dana Kavurma</span></div>
+                <div class="menu-item"><span>Fıstıklı İç Pilavlı Piliç Topkapı</span></div>
+                <div class="menu-item"><span>Krepli Tavuk</span></div>
+                <div class="menu-item"><span>Karışık Sebze Dolmaları</span></div>
+                <div class="menu-item"><span>Saç Tava</span></div>
+            </div>
+
+            <!-- Fırın -->
+            <div class="menu-kategori">
+                <h3>🔥 Taş Fırından Pide & Lahmacun</h3>
+                <div class="menu-item"><span>Kıymalı Pide</span></div>
+                <div class="menu-item"><span>Kuşbaşılı Pide</span></div>
+                <div class="menu-item"><span>Kaşarlı Pide</span></div>
+                <div class="menu-item"><span>Geleneksel Çıtır Lahmacun</span></div>
+            </div>
+
+            <!-- Tatlılar -->
+            <div class="menu-kategori">
+                <h3>🍰 Tatlılar</h3>
+                <div class="menu-item"><span>Atom Tatlısı</span></div>
+                <div class="menu-item"><span>Kemal Paşa Tatlısı</span></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- İletişim Bölümü -->
+    <section id="iletisim" class="section-padding">
+        <div class="iletisim-grid">
+            <div>
+                <h2>İletişim & Konum</h2>
+                <p><br><strong>Adres:</strong> Meşrutiyet Mahallesi, Karanfil Sokak No:59, 06420 Çankaya/Ankara</p>
+                <p><strong>Telefon:</strong> <a href="tel:+903124193751" style="color: var(--kiremit); text-decoration: none;">+90 312 419 37 51</a></p>
+                <p><br><strong>Çalışma Saatleri:</strong></p>
+                <p>Pazartesi - Cumartesi: 08:00 - 21:00</p>
+                <p>Pazar: Kapalı</p>
+                <p><br><strong>Hizmetlerimiz:</strong> Paket Servis, Gel-Al, İç Mekanda Servis</p>
+            </div>
+            <div>
+                <!-- Google Haritalar Yerleşimi -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3059.938837199464!2d32.852441!3d39.917173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d34f0000000000%3A0x0000000000000000!2sKaranfil%20Sk.%20No%3A59%2C%20%C3%87ankaya%2FAnkara!5e0!3m2!1str!2str!4v1700000000000" width="100%" height="300" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Şeker Anadolu Mutfağı</div>
+        <p>© 1999 - 2026 Türkiye Şeker Sanayi İşçiler Sendikası Ölüm ve Sosyal Yardımlaşma Vakfı İktisadi İşletmesi.</p>
+        <p>Tüm hakları saklıdır.</p>
+    </footer>
+
+</body>
+</html>
